@@ -1,5 +1,5 @@
 const about = (req, res) => {
-  res.render("index", {
+  res.render("generic-text", {
     title: "About",
   });
 };
