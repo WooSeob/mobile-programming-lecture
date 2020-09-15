@@ -5,7 +5,7 @@ const homelist = (req, res) => {
 };
 
 const locationInfo = (req, res) => {
-  res.render("index", {
+  res.render("location-info", {
     title: "Location info",
   });
 };
