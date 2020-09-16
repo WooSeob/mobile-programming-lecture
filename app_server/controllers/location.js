@@ -45,12 +45,12 @@ const locationInfo = (req, res) => {
       callToAction:
         "If you've been and you like it - or if you don't - please leave a review to help other people just like you.",
     },
-    locations: {
+    location: {
       name: "Starcups",
       address: "125 High Street, Reading, RG6 1PS",
       rating: 3,
       facilities: ["Hot drinks", "Food", "Premium wifi"],
-      coords: { lat: 51.455041, lng: -0.9690884 },
+      coords: { lat: 37.0116648, lng: 127.2620489 },
       openingTimes: [
         {
           days: "Monday - Friday",
