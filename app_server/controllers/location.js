@@ -50,7 +50,7 @@ const locationInfo = (req, res) => {
       address: "125 High Street, Reading, RG6 1PS",
       rating: 3,
       facilities: ["Hot drinks", "Food", "Premium wifi"],
-      coords: { lng: "37.0116648", lat: "127.2620489" },
+      coords: { lat: "37.0116648", lng: "127.2620489" },
       openingTimes: [
         {
           days: "Monday - Friday",
