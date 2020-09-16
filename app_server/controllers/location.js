@@ -12,21 +12,21 @@ const homelist = (req, res) => {
     locations: [
       {
         name: "Starcups",
-        address: "125 High Street, Reading, RG6 1PS",
+        address: "서울특별시 관악구 호암로 100",
         rating: 3,
         facilities: ["Hot drinks", "Food", "Premium wifi"],
         distance: "100m",
       },
       {
         name: "Cafe Hero",
-        address: "125 High Street, Reading, RG6 1PS",
+        address: "서울특별시 관악구 호암로 300",
         rating: 4,
         facilities: ["Hot drinks", "Food", "Premium wifi"],
         distance: "200m",
       },
       {
         name: "Burger Queen",
-        address: "125 High Street, Reading, RG6 1PS",
+        address: "서울특별시 관악구 봉천동 남부순환로 1934",
         rating: 2,
         facilities: ["Food", "Premium wifi"],
         distance: "250m",
@@ -47,10 +47,10 @@ const locationInfo = (req, res) => {
     },
     location: {
       name: "Starcups",
-      address: "125 High Street, Reading, RG6 1PS",
+      address: "서울특별시 관악구 호암로 100",
       rating: 3,
       facilities: ["Hot drinks", "Food", "Premium wifi"],
-      coords: { lat: "37.0116648", lng: "127.2620489" },
+      coords: { lat: 37.0116648, lng: 127.2620489 },
       openingTimes: [
         {
           days: "Monday - Friday",
