@@ -1,38 +1,35 @@
+const Location = require("../models/locations");
+
 const homelist = (req, res) => {
-  res.render("locations-list", {
-    title: "Loc8r - find a place to work with wifi",
-    pageHeader: {
-      title: "Loc8r",
-      strapline: "Find places to work with wifi near you!",
-    },
-    sidebar:
-      "Looking for wifi and a seat? Loc8r helps you find places to work\
-    when out and about. Perhaps with coffee, cake or a pint? \
-    Let Loc8r help you find the place you're looking for.",
-    locations: [
-      {
-        name: "Starcups",
-        address: "서울특별시 관악구 호암로 100",
-        rating: 3,
-        facilities: ["Hot drinks", "Food", "Premium wifi"],
-        distance: "100m",
-      },
-      {
-        name: "Cafe Hero",
-        address: "서울특별시 관악구 호암로 300",
-        rating: 4,
-        facilities: ["Hot drinks", "Food", "Premium wifi"],
-        distance: "200m",
-      },
-      {
-        name: "Burger Queen",
-        address: "서울특별시 관악구 봉천동 남부순환로 1934",
-        rating: 2,
-        facilities: ["Food", "Premium wifi"],
-        distance: "250m",
-      },
-    ],
-  });
+  Location.find()
+    .then((data) => {
+      let locations = data.map((v) => {
+        let loc = {
+          name: v.name,
+          address: v.address,
+          rating: v.rating,
+          facilities: v.facilities,
+          distance: "100m", //계산으로 수정
+        };
+        return loc;
+      });
+
+      res.render("locations-list", {
+        title: "Loc8r - find a place to work with wifi",
+        pageHeader: {
+          title: "Loc8r",
+          strapline: "Find places to work with wifi near you!",
+        },
+        sidebar:
+          "Looking for wifi and a seat? Loc8r helps you find places to work\
+        when out and about. Perhaps with coffee, cake or a pint? \
+        Let Loc8r help you find the place you're looking for.",
+        locations: locations,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const locationInfo = (req, res) => {

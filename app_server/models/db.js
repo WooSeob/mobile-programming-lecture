@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const dbURI = "mongodb://localhost:27017/Loc8r";
+//const dbURI = "mongodb://localhost:27017/Loc8r";
+const PASSWORD = require("../../password");
+const dbURI = `mongodb+srv://my_atlas_user:${PASSWORD}@cluster0.zxqpu.mongodb.net/Loc8r`;
+
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 mongoose.connection.on("connected", function () {
@@ -41,3 +44,7 @@ process.on("SIGTERM", () => {
 });
 
 require("./locations");
+
+module.exports = {
+  connection: mongoose.connection,
+};
