@@ -35,13 +35,13 @@ app.use("/api", (req, res, next) => {
 // app.use("/", indexRouter); // 서버사이드 렌더링을 하지않음
 
 app.use("/api", apiRouter);
-// app.get("*", function (req, res, next) {
-//   res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
-// });
-
-app.get(/(\/about) | (\/location\/[a-z0-9]{24})/, function (req, res, next) {
+app.get("*", function (req, res, next) {
   res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
 });
+
+// app.get(/(\/about)|(\/location\/[a-z0-9]{24})/, function (req, res, next) {
+//   res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
+// });
 
 app.use("/users", usersRouter);
 
