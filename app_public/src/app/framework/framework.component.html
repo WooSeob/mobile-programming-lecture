@@ -1,0 +1,32 @@
+<nav class="navbar fixed-top navbar-expand-md">
+  <div class="container">
+    <a routerLink="" class="navbar-brand"> Loc8r</a>
+    <button
+      class="navbar-toggler navbar-left"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarMain"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collaps collapse" id="navbarMain" style="display: block">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="about" routerLinkActive="active" class="nav-link"
+            >About</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container content">
+  <router-outlet></router-outlet>
+  <footer>
+    <div class="row">
+      <div class="col-12">
+        <small>&copy;by 2016250033 Byun Woo Seob</small>
+      </div>
+    </div>
+  </footer>
+</div>

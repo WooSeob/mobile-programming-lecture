@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("./app_api/models/db");
 
-const indexRouter = require("./app_server/routes/index");
+// const indexRouter = require("./app_server/routes/index"); // 서버사이드 렌더링을 하지않음
 const apiRouter = require("./app_api/routes/index");
 const usersRouter = require("./app_server/routes/users");
 
@@ -20,9 +20,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "app_public", "build"))); // 컴파일된 Angular 앱을 사용
 
-app.use("/", indexRouter);
+app.use("/api", (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.header(
+    "Access-Control-Allow-headers",
+    "Origin, X-Requested-with, \
+  Content-Type, Accept"
+  );
+  next();
+});
+
+// app.use("/", indexRouter); // 서버사이드 렌더링을 하지않음
+
 app.use("/api", apiRouter);
+// app.get("*", function (req, res, next) {
+//   res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
+// });
+
+app.get(/(\/about) | (\/location\/[a-z0-9]{24})/, function (req, res, next) {
+  res.sendFile(path.join(__dirname, "app_public", "build", "index.html"));
+});
+
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler

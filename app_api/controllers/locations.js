@@ -11,7 +11,7 @@ const locationsListByDistance = async (req, res) => {
   const geoOptions = {
     distanceField: "distance.calculated",
     spherical: true,
-    maxDistance: 20000,
+    maxDistance: parseInt(req.query.maxDistance),
   };
   if (!lng || !lat) {
     return res
@@ -40,7 +40,7 @@ const locationsListByDistance = async (req, res) => {
     });
     res.status(200).json(locations);
   } catch (err) {
-    res, status(404).json(err);
+    res.status(404).json(err);
   }
 };
 const locationsCreate = (req, res) => {
