@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "icons": "pwa-asset-generator src/assets/icons/icon.png src/assets/icons --icon-only -i src/index.html -m src/manifest.webmanifest"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "~10.2.0",
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
+    "@angular/service-worker": "~10.2.0",
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
