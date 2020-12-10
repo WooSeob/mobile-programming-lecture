@@ -9,12 +9,36 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="about" routerLinkActive="active" class="nav-link"
+          >About</a
+        >
+      </li>
+    </ul>
     <div class="navbar-collaps collapse" id="navbarMain" style="display: block">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a routerLink="about" routerLinkActive="active" class="nav-link"
-            >About</a
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="login" class="nav-link" *ngIf="!isLoggedIn()"
+            >Sign in</a
           >
+        </li>
+        <li
+          class="nav-item dropdown"
+          routerLinkActive="active"
+          *ngIf="isLoggedIn()"
+        >
+          <a
+            type="button"
+            class="nav-link dropdown-toogle"
+            data-toggle="dropdown"
+            role="button"
+          >
+            {{ getUsername() }} ▼
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="doLogout()">Logout</a>
+          </div>
         </li>
       </ul>
     </div>

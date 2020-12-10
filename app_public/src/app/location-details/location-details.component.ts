@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location, Review } from '../location';
 import { Loc8rDataService } from '../loc8r-data.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-location-details',
@@ -19,7 +20,10 @@ export class LocationDetailsComponent implements OnInit {
   public formVisible: boolean = false;
 
   public googleAPIKey: string = 'AIzaSyDFz1OujY1YOenwa9yX3Ds0OnKI1OTGd-k';
-  constructor(private loc8rDataService: Loc8rDataService) {}
+  constructor(
+    private loc8rDataService: Loc8rDataService,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     console.log(location);
@@ -47,6 +51,7 @@ export class LocationDetailsComponent implements OnInit {
 
   public onReviewSubmit(): void {
     this.formError = '';
+    this.newReview.author = this.getUsername();
     if (this.formIsValid()) {
       console.log(this.newReview);
       this.loc8rDataService
@@ -61,5 +66,14 @@ export class LocationDetailsComponent implements OnInit {
     } else {
       this.formError = 'All fields required, please try again';
     }
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
+  }
+
+  public getUsername(): string {
+    const { name } = this.authenticationService.getCurrentUser();
+    return name ? name : 'Guest';
   }
 }

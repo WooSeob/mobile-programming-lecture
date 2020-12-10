@@ -44,6 +44,7 @@ process.on("SIGTERM", () => {
 });
 
 require("./locations");
+require("./users");
 
 module.exports = {
   connection: mongoose.connection,
