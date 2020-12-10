@@ -27,6 +27,7 @@
           class="nav-item dropdown"
           routerLinkActive="active"
           *ngIf="isLoggedIn()"
+          (click)="toggle()"
         >
           <a
             type="button"
@@ -36,7 +37,7 @@
           >
             {{ getUsername() }} ▼
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu" *ngIf="show" style="display: block">
             <a class="dropdown-item" (click)="doLogout()">Logout</a>
           </div>
         </li>

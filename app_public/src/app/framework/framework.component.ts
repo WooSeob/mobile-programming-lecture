@@ -16,7 +16,10 @@ export class FrameworkComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public show: boolean = false;
+
   public doLogout(): void {
+    this.show = false;
     this.authenticationService.logout();
   }
 
@@ -27,5 +30,8 @@ export class FrameworkComponent implements OnInit {
   public getUsername(): string {
     const user: User = this.authenticationService.getCurrentUser();
     return user ? user.name : 'Guest';
+  }
+  public toggle(): void {
+    this.show = !this.show;
   }
 }
